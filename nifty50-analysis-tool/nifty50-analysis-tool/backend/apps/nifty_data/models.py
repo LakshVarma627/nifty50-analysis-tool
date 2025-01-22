@@ -1,13 +1,13 @@
-from djongo import models  
+from pymongo import MongoClient
 
-class NiftyData(models.Model):  
-    timestamp = models.DateTimeField(auto_now_add=True)  
-    open = models.FloatField()  
-    close = models.FloatField()  
-    high = models.FloatField()  
-    low = models.FloatField()  
-    volume = models.BigIntegerField()  
+class NiftyData:
+    def __init__(self):
+        self.client = MongoClient(os.getenv('MONGO_URI', 'mongodb://localhost:27017'))
+        self.db = self.client[os.getenv('MONGO_DB_NAME', 'nifty50')]
+        self.collection = self.db['nifty_data']
 
-    class Meta:  
-        db_table = 'nifty_data'  
-        managed = False  # MongoDB handles schema  
+    def insert_data(self, data):
+        self.collection.insert_one(data)
+
+    def get_data(self, query):
+        return self.collection.find(query)
