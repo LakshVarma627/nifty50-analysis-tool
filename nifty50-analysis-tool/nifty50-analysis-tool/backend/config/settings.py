@@ -95,7 +95,12 @@ mongo_db = mongo_client[MONGO_DB_NAME]
 # ================== Custom User Model ==================
 AUTH_USER_MODEL = 'users.CustomUser'
 
-# ================== Authentication & REST Framework ==================
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.J
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Properly closed
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    )
+}
