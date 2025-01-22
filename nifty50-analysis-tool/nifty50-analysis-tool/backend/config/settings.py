@@ -54,6 +54,24 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+# ================== Templates Configuration ==================
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],  # Optional: Add template directories
+        'APP_DIRS': True,  # Required for Django to find admin templates
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # ================== Database Configuration ==================
