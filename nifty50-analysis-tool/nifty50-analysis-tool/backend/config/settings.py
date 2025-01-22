@@ -1,5 +1,4 @@
 import os
-from djongo import connectors
 
 DATABASES = {
     'default': {
