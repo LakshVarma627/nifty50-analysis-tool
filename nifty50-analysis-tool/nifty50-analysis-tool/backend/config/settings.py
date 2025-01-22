@@ -14,8 +14,15 @@ mongo_db = mongo_client[os.getenv('MONGO_DB_NAME', 'nifty50')]
 
 # Remove auth/admin/sessions if unused
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
-    # 'django.contrib.auth',
-    # 'django.contrib.sessions',
-    'your_app',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'rest_framework',          # If you use Django REST Framework
+    'corsheaders',             # If you use django-cors-headers
+    'apps.users',              # Custom user model & JWT auth
+    'apps.alerts',             # Alert logic (Celery tasks)
+    'apps.analysis',           # Technical indicator calculations
+    'apps.nifty_data',         # MongoDB models for stock data
 ]
