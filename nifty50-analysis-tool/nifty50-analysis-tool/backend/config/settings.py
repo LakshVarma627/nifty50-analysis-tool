@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # ================== Database Configuration ==================
 # PostgreSQL for Django internals (production)
+# settings.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -84,6 +85,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': 'require'  # Required for Render PostgreSQL
+        }
     }
 }
 
