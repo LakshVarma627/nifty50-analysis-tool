@@ -98,7 +98,7 @@ mongo_client = MongoClient(MONGO_URI)
 mongo_db = mongo_client[MONGO_DB_NAME]
 
 # ================== Authentication & Users ==================
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'apps.users.CustomUser'
 
 # ================== REST Framework ==================
 REST_FRAMEWORK = {
