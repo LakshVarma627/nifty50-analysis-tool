@@ -1,15 +1,16 @@
 Django==4.2.7
-   djangorestframework==3.14.0
-   django-cors-headers==4.2.0
-   djangorestframework-simplejwt==5.3.0
-   python-dotenv==1.0.0
-   pymongo==4.5.0
-   celery==5.3.4
-   redis==4.6.0
-   pandas==2.1.2
-   requests==2.31.0
-   beautifulsoup4==4.12.2
-   python-dateutil==2.9.0
-   whitenoise==6.6.0
-   django-filter==23.5
-   psycopg2-binary==2.9.9  # <-- Add this line
+djangorestframework==3.14.0
+django-cors-headers==4.2.0
+djangorestframework-simplejwt==5.3.0
+python-dotenv==1.0.0
+pymongo==4.5.0
+celery==5.3.4
+redis==4.6.0
+pandas==2.1.2
+requests==2.31.0
+beautifulsoup4==4.12.2
+python-dateutil==2.9.0
+whitenoise==6.6.0
+django-filter==23.5
+psycopg2-binary==2.9.9
+pip==24.3.1
