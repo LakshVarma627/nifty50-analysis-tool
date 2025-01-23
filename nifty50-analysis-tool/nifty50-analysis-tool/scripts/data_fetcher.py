@@ -14,12 +14,13 @@ def fetch_stock_data():
     api_url = "https://api.example.com/nifty50/stocks"  # Replace with actual API endpoint
     api_key = os.getenv('STOCK_API_KEY')  # Ensure this environment variable is set
 
-    response = requests.get(api_url, headers={"Authorization": f"Bearer {api_key}"})
-    
-    if response.status_code == 200:
-        return response.json()
-    else:
+    try:
+        response = requests.get(api_url, headers={"Authorization": f"Bearer {api_key}"})
         response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred while fetching stock data: {e}")
+        return None
 
 # Function to store fetched data in MongoDB
 def store_stock_data(data):

@@ -3,10 +3,15 @@ import api from '../../services/api';
 
 export default function AlertForm() {
   const [price, setPrice] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await api.post('/alerts/', { target_price: price });
+    try {
+      await api.post('/alerts/', { target_price: price });
+    } catch (err) {
+      setError('Failed to set alert. Please try again.');
+    }
   };
 
   return (
@@ -18,6 +23,7 @@ export default function AlertForm() {
         placeholder="Enter target price"
       />
       <button type="submit">Set Alert</button>
+      {error && <p>{error}</p>}
     </form>
   );
 }
