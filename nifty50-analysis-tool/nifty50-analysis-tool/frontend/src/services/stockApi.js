@@ -25,3 +25,8 @@ export const getNiftyData = async () => {
     return handleError(error);
   }
 };
+
+// Ensure import.meta.env.VITE_API_URL is set and handle the case where it is not
+if (!import.meta.env.VITE_API_URL) {
+  console.warn('VITE_API_URL is not set. Using default URL: http://localhost:8000/api/v1');
+}

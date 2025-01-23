@@ -13,7 +13,7 @@ ENV = os.environ.get('DJANGO_ENV', 'development')
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # Adjust this if needed
 
 # Security
-SECRET_KEY = os.environ.get('SECRET_KEY')  # Remove default value in production!
+SECRET_KEY = os.environ.get('SECRET_KEY')  # Ensure the SECRET_KEY environment variable is set
 DEBUG = ENV == 'development'
 ALLOWED_HOSTS = ['*'] if DEBUG else [
     'nifty50-backend.onrender.com',  # Your Render.com hostname

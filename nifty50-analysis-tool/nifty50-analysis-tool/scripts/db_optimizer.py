@@ -3,6 +3,8 @@ from django.db import connection
 from django.core.cache import cache
 
 # Initialize Django settings
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 django.setup()
 
 # Import your models here
@@ -36,10 +38,13 @@ def implement_caching(key, value, timeout=300):
     print(f"Data cached with key {key}.")
 
 def archive_data(table_name, archive_table_name, condition):
-    with connection.cursor() as cursor:
-        cursor.execute(f"INSERT INTO {archive_table_name} SELECT * FROM {table_name} WHERE {condition};")
-        cursor.execute(f"DELETE FROM {table_name} WHERE {condition};")
-    print(f"Data archived from {table_name} to {archive_table_name} where {condition}.")
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(f"INSERT INTO {archive_table_name} SELECT * FROM {table_name} WHERE {condition};")
+            cursor.execute(f"DELETE FROM {table_name} WHERE {condition};")
+        print(f"Data archived from {table_name} to {archive_table_name} where {condition}.")
+    except Exception as e:
+        print(f"An error occurred while archiving data: {e}")
 
 def update_schema():
     # Example: adding a new column

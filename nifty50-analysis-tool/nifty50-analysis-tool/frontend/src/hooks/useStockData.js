@@ -7,9 +7,13 @@ export const useStockData = () => {
 
   useEffect(() => {  
     const fetchData = async () => {  
-      const response = await getNiftyData();  
-      if (response.error) setError(response.error);  
-      else setData(response);  
+      try {
+        const response = await getNiftyData();  
+        if (response.error) setError(response.error);  
+        else setData(response);  
+      } catch (err) {
+        setError('Failed to fetch data. Please try again.');
+      }
     };  
     fetchData();  
 
