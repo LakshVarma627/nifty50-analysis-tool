@@ -14,8 +14,8 @@
     "react-router-dom": "^6.14.2",
     "react-websocket": "^4.0.0",
     "mock-socket": "^9.1.5",
-    "apexcharts": "^4.0.0",         
-    "react-apexcharts": "^1.7.0"    
+    "apexcharts": "4.0.0",          // Use exact version
+    "react-apexcharts": "1.7.0"      // Use exact version
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.3",
